@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Deep slate-blue — primary brand color */
+  --color-navy-950: #0f172a;
+  --color-navy-900: #16213e;
+  --color-navy-800: #1b2a4a;
+  --color-navy-700: #22355c;
+  --color-navy-600: #2b4372;
+  --color-navy-500: #375490;
+
+  /* Warm amber — accent for CTAs and highlights */
+  --color-gold-600: #b45309;
+  --color-gold-500: #d97706;
+  --color-gold-400: #f59e0b;
+  --color-gold-300: #fbbf5c;
+
+  /* Teal — secondary accent, replaces the old maroon */
+  --color-maroon-700: #0f766e;
+  --color-maroon-600: #0d9488;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: #1c2433;
+  background-color: #f8fafc;
+}
+
+h1, h2, h3, h4, h5, .font-heading {
+  font-family: var(--font-heading);
+}
+
+::selection {
+  background: var(--color-gold-400);
+  color: var(--color-navy-950);
+}
+
+.section-label {
+  letter-spacing: 0.12em;
+}
+
+/* Marquee for notices */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 32s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Subtle scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #eef1f6; }
+::-webkit-scrollbar-thumb { background: var(--color-navy-700); border-radius: 8px; }
+
+.bg-diagonal-pattern {
+  background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.035) 0px, rgba(255,255,255,0.035) 2px, transparent 2px, transparent 14px);
+}
+
+/* Scroll-reveal fade-up, driven by IntersectionObserver toggling .is-visible */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Shared interactive lift for cards/links */
+.interactive-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.interactive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -12px rgba(15, 23, 42, 0.18);
+}
+
+.btn-press {
+  transition: transform 0.15s ease;
+}
+.btn-press:active {
+  transform: scale(0.96);
+}
